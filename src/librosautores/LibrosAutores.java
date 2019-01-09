@@ -1,6 +1,7 @@
 package librosautores;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 /**
  *
@@ -8,7 +9,7 @@ import java.io.IOException;
  */
 public class LibrosAutores {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         Menu.MenuPrincipal();
     }
 }

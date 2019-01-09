@@ -2,6 +2,7 @@ package librosautores;
 
 import Metodos.Altas;
 import java.io.IOException;
+import java.text.ParseException;
 import static librosautores.EntradaTeclado.read;
 
 /**
@@ -10,7 +11,7 @@ import static librosautores.EntradaTeclado.read;
  */
 class Menu {
 
-    public static void MenuPrincipal() throws IOException {
+    public static void MenuPrincipal() throws IOException, ParseException {
 
         int opc = 0;
 
