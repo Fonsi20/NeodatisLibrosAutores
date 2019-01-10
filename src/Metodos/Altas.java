@@ -57,7 +57,7 @@ public class Altas {
             System.err.println("----------------------------------------------"
                     + "\nAñade libros del autor " + nombre + ": \n");
             do {
-                AñadirLibro(dni);
+                AñadirLibro(autor);
                 opc = Comprobaciones.PreguntaSiNO();
             } while (opc != 1);
 
@@ -119,7 +119,7 @@ public class Altas {
         odb.close();
     }
 
-    private static void AñadirLibro(String dni) throws IOException, ParseException {
+    private static void AñadirLibro(Autores autor) throws IOException, ParseException {
 
         ODB odb = ODBFactory.openClient("localhost", 8000, "LibrosAutores");
 
@@ -153,10 +153,7 @@ public class Altas {
         if (objects.isEmpty()) {
 
             Libros libro = new Libros(cod, Titulo, Categoria, Precio, fechaPublicacion);
-
-            query = new CriteriaQuery(Autores.class, Where.equal("dni", dni));
-            Objects<Autores> objects2 = odb.getObjects(query);
-            objects2.next().getLibro().add(libro);
+            autor.getLibro().add(libro);
 
         } else {
             System.err.println("Ya existe ese libro con ese codigo en la BBDD.");
