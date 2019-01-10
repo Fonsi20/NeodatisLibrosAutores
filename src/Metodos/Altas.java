@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Set;
 import static librosautores.EntradaTeclado.read;
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.ODBFactory;
@@ -154,6 +153,7 @@ public class Altas {
 
             Libros libro = new Libros(cod, Titulo, Categoria, Precio, fechaPublicacion);
             autor.getLibro().add(libro);
+            System.out.println(autor.getLibro());
 
         } else {
             System.err.println("Ya existe ese libro con ese codigo en la BBDD.");

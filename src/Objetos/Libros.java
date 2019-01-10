@@ -9,17 +9,17 @@ public class Libros {
     
     private int cod;
     private String Titulo;
-    private String Categoría;
+    private String Categoria;
     private float Precio;
     private Date fechaPublicacion;
 
     public Libros() {
     }
 
-    public Libros(int cod, String Titulo, String Categoría, float Precio, Date fechaPublicacion) {
+    public Libros(int cod, String Titulo, String Categoria, float Precio, Date fechaPublicacion) {
         this.cod = cod;
         this.Titulo = Titulo;
-        this.Categoría = Categoría;
+        this.Categoria = Categoria;
         this.Precio = Precio;
         this.fechaPublicacion = fechaPublicacion;
     }
@@ -40,12 +40,12 @@ public class Libros {
         this.Titulo = Titulo;
     }
 
-    public String getCategoría() {
-        return Categoría;
+    public String getCategoria() {
+        return Categoria;
     }
 
-    public void setCategoría(String Categoría) {
-        this.Categoría = Categoría;
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
     }
 
     public float getPrecio() {
