@@ -32,12 +32,10 @@ public class Borrados {
             Objects<Autores> objects = odb.getObjects(query);
 
             if (objects.isEmpty()) {
-
                 opc = 1;
                 System.err.println("'ERROR' - No existe ningun autor con ese Nombre.");
 
             } else {
-
                 do {
                     Autores auto = (Autores) odb.getObjects(query).getFirst();
                     System.out.println("\nEscoge a un Libro por su código:");
