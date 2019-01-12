@@ -2,16 +2,17 @@ package Metodos;
 
 import Objetos.Autores;
 import Objetos.Libros;
-import java.math.BigInteger;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import static librosautores.EntradaTeclado.read;
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.ODBFactory;
-import org.neodatis.odb.ObjectValues;
 import org.neodatis.odb.Objects;
-import org.neodatis.odb.Values;
 import org.neodatis.odb.core.query.IQuery;
-import org.neodatis.odb.core.query.IValuesQuery;
 import org.neodatis.odb.core.query.criteria.And;
 import org.neodatis.odb.core.query.criteria.ICriterion;
 import org.neodatis.odb.core.query.criteria.Where;
@@ -85,8 +86,45 @@ public class Visualizar {
         odb.close();
     }
 
-    public static void librosAutorFechas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void librosAutorFechas() throws IOException, ParseException {
+        ODB odb = ODBFactory.openClient("localhost", 8000, "LibrosAutores");
+        
+        int i = 1;
+        
+        String fechaInicio, fechaFin;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        System.out.println("Consulta los libros publicados por un autor entre dos fecha.\n"
+                + "Introduce el DNI del autor a consultar:");
+
+        AutorNombre();
+
+        System.out.print("> ");
+        String dni = read.readLine();
+
+        System.out.print("Introduce la fecha de INICIO:\n> ");
+        fechaInicio = read.readLine();
+        Date fechaPublicacion = sdf.parse(fechaInicio);
+
+        System.out.print("Introduce la fecha de FIN:\n> ");
+        fechaFin = read.readLine();
+        Date fechaPublicacionFIN = sdf.parse(fechaFin);
+
+        ICriterion criterio = new And().add(Where.gt("fechaPublicacion", fechaPublicacion)).add(Where.le("fechaPublicacion", fechaPublicacionFIN));
+        CriteriaQuery query = new CriteriaQuery(Libros.class, criterio);
+
+        Objects<Libros> objects2 = odb.getObjects(query);
+
+        if (objects2.isEmpty()) {
+            System.err.println("'ERROR' - No hay ningun autor español por debajo de los 60 Años.");
+        } else {
+            while (objects2.hasNext()) {
+                Libros lib = objects2.next();
+                System.out.println((i++) + "\t: " + lib.getCod() + " * " + lib.getTitulo() + " * " + lib.getFechaPublicacion());
+            }
+        }
+        odb.close();
+
     }
 
     public static void nacionalidadCantidad() {
