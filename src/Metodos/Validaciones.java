@@ -1,5 +1,16 @@
 package Metodos;
 
+import Objetos.Autores;
+import Objetos.Libros;
+import java.io.IOException;
+import static librosautores.EntradaTeclado.read;
+import org.neodatis.odb.ODB;
+import org.neodatis.odb.ODBFactory;
+import org.neodatis.odb.Objects;
+import org.neodatis.odb.core.query.IQuery;
+import org.neodatis.odb.core.query.criteria.Where;
+import org.neodatis.odb.impl.core.query.criteria.CriteriaQuery;
+
 /**
  *
  * @author mallo
@@ -58,4 +69,33 @@ public class Validaciones {
         return miLetra;
     }
 
+    public static void titulosAutor() throws IOException {
+
+        ODB odb = ODBFactory.openClient("localhost", 8000, "LibrosAutores");
+        int opc = 0;
+
+        do {
+            System.out.println("\nVer los libros de un autor.\nIntroduce el nombre del autor:\n");
+            Visualizar.AutorNombre();
+            System.out.println("> ");
+            String nombre = read.readLine();
+
+            IQuery query = new CriteriaQuery(Autores.class, Where.equal("nombre", nombre));
+            Objects<Autores> objects = odb.getObjects(query);
+
+            if (objects.isEmpty()) {
+
+                opc = 1;
+                System.err.println("'ERROR' - No existe ningun autor con ese Nombre.");
+
+            } else {
+                opc = 0;
+                Autores auto = (Autores) odb.getObjects(query).getFirst();
+                Visualizar.LibrosAutor(auto);
+            }
+        } while (opc != 0);
+
+        odb.close();
+
+    }
 }

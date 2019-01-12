@@ -1,7 +1,9 @@
 package librosautores;
 
 import Metodos.Altas;
+import Metodos.Borrados;
 import Metodos.Modificaciones;
+import Metodos.Validaciones;
 import Metodos.Visualizar;
 import java.io.IOException;
 import java.text.ParseException;
@@ -33,7 +35,7 @@ class Menu {
                     + "  6  /  Consulta de todos los autores de nacionalidad ITALIANA.\n"
                     + "  7  /  Consulta de los libros escritos por un autor determinado entre dos fechas.\n"
                     + "\n"
-                    + "  8  /  Visualizar todos los autores ESPAÑOLES menores de 60 años.\n"
+                    + "  8  /  Visualizar todos los autores SPAIN menores de 60 años.\n"
                     + "  9  /  Viusalizar por Nacionalidad el numero de autores.\n"
                     + "\n"
                     + "  10 /  Dando el nombre del autor que nos visualice todos los titulos.\n"
@@ -58,6 +60,7 @@ class Menu {
                     Modificaciones.modPrecio();
                     break;
                 case 5:
+                    Borrados.borrarLibro();
                     break;
                 case 6:
                     Visualizar.verItalianos();
@@ -66,10 +69,13 @@ class Menu {
                     Visualizar.librosAutorFechas();
                     break;
                 case 8:
+                    Visualizar.spainMenos60();
                     break;
                 case 9:
+                    Visualizar.nacionalidadCantidad();
                     break;
                 case 10:
+                    Validaciones.titulosAutor();
                     break;
                 case 11:
                     System.err.println("Adios!");
