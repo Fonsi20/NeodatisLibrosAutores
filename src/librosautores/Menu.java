@@ -1,6 +1,7 @@
 package librosautores;
 
 import Metodos.Altas;
+import Metodos.Modificaciones;
 import java.io.IOException;
 import java.text.ParseException;
 import static librosautores.EntradaTeclado.read;
@@ -50,8 +51,10 @@ class Menu {
                     Altas.Libro();
                     break;
                 case 3:
+                    Modificaciones.modDirec();
                     break;
                 case 4:
+                    Modificaciones.modPrecio();
                     break;
                 case 5:
                     break;
