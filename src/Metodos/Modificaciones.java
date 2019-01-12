@@ -80,7 +80,7 @@ public class Modificaciones {
                     System.out.println("\nEscoge a un Libro por su Titulo:\n");
 
                     System.out.println(auto.getLibro());
-                    Visualizar.LibrosAutor(auto);
+                    Visualizar.LibrosAutor(objects);
                     String Titulo = read.readLine();
 //
 //                    IQuery query2 = new CriteriaQuery(Libros.class, Where.equal("Titulo", Titulo));

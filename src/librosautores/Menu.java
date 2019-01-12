@@ -2,6 +2,7 @@ package librosautores;
 
 import Metodos.Altas;
 import Metodos.Modificaciones;
+import Metodos.Visualizar;
 import java.io.IOException;
 import java.text.ParseException;
 import static librosautores.EntradaTeclado.read;
@@ -59,8 +60,10 @@ class Menu {
                 case 5:
                     break;
                 case 6:
+                    Visualizar.verItalianos();
                     break;
                 case 7:
+                    Visualizar.librosAutorFechas();
                     break;
                 case 8:
                     break;
