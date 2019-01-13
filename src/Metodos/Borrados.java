@@ -41,7 +41,7 @@ public class Borrados {
                     System.out.println("\nEscoge a un Libro por su código:");
                     Visualizar.LibrosAutor(auto);
                     System.out.print("> ");
-                    String cod = read.readLine();
+                    int cod = Integer.parseInt(read.readLine());
 
                     IQuery query2 = new CriteriaQuery(Libros.class, Where.equal("cod", cod));
                     Objects<Libros> objects2 = odb.getObjects(query2);
